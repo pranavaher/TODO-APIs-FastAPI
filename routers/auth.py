@@ -1,16 +1,16 @@
 from fastapi import APIRouter
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr
 from models import Users
 
 router = APIRouter()
 
 class CreateUserRequest(BaseModel):
-  email = str
-  username = str
-  first_name = str
-  last_name = str
-  password = str
-  role = str
+  email: EmailStr
+  username: str
+  first_name: str
+  last_name: str
+  password: str
+  role: str
 
 @router.post("/auth/")
 async def create_user(create_user_request: CreateUserRequest):
